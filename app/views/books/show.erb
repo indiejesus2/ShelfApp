@@ -1,0 +1,10 @@
+<form action="/books/<%= @book.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+
+<h2><%= @book.title %></h2>
+<h4><%= @book.author %></h4>
+<h4><%= @book.genre %></h4>
+
+<input type="submit" value="delete">
+
+</form>

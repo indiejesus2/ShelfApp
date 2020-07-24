@@ -1,0 +1,32 @@
+<h1><%= current_user.username %>'s Bookshelf</h1>
+
+<p><%= @books.length %></p>
+
+
+<% @books.each do |book| %>
+
+
+
+<ol>
+    <li>Title: <%= book.title %></li>
+    <li>Author: <%= book.author %></li>
+    <li>Genre: <%= book.genre %></li>
+    <li>Pages Read: <input type="number" name="book.pages_read" id="<%= book.pages_read %>" value="<%= book.pages_read %>"></li>
+    <li>Read: <% if !book.read %>
+    Still reading</li>
+    <% end %>
+</ol>
+
+<form action="/books/<%= book.id %>" method="post">
+<input type="hidden" name="_method" value="PATCH">
+<input type="submit" value="Update">
+</form>
+
+
+<form action="/books/<%= book.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="delete">
+</form>
+<br>
+
+<% end %>
