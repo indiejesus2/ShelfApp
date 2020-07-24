@@ -26,9 +26,11 @@ class BooksController < ApplicationController
     end
 
     patch '/books/:id' do
-        binding.pry
         @book = Book.find_by_id(params[:id])
-        # if book.pages_read !=
+        if @book.pages_read != params["book.pages_read"]
+            @book.pages_read = params["book.pages_read"]
+            @book.save
+        end
         redirect "/books"
     end
 

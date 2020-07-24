@@ -5,20 +5,19 @@
 
 <% @books.each do |book| %>
 
-
+<form action="/books/<%= book.id %>" method="post">
+<input type="hidden" name="_method" value="PATCH">
 
 <ol>
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
     <li>Pages Read: <input type="number" name="book.pages_read" id="<%= book.pages_read %>" value="<%= book.pages_read %>"></li>
-    <li>Read: <% if !book.read %>
-    Still reading</li>
+    <li>Read: <% if !book.read %> Still reading </li>
     <% end %>
 </ol>
 
-<form action="/books/<%= book.id %>" method="post">
-<input type="hidden" name="_method" value="PATCH">
+
 <input type="submit" value="Update">
 </form>
 
