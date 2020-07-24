@@ -27,10 +27,17 @@ class BooksController < ApplicationController
 
     patch '/books/:id' do
         @book = Book.find_by_id(params[:id])
+        binding.pry
+        # <%= if 'checked' book.read = true %>
         if @book.pages_read != params["book.pages_read"]
             @book.pages_read = params["book.pages_read"]
             @book.save
         end
+
+        if @book.read != params[:book][:read]
+            @book.read = params[:book][:read]
+        end
+        
         redirect "/books"
     end
 
