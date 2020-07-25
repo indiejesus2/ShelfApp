@@ -4,6 +4,7 @@
 
 <div>
 
+
 <% @books.each do |book| %>
 
 <form action="/books/<%= book.id %>" method="post">
@@ -13,7 +14,8 @@
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
-    <li>Pages Read: <input type="number" name="book.pages_read" id="<%= book.pages_read %>" value="<%= book.pages_read %>"></li>
+    <% binding.pry %>
+   <li>Pages Read: <input type="number" name="book.pages_read" id="<%= book.pages_read %>" value="<%= book.pages_read %>"></li>
     <li>Read: <% if !book.read %> Still reading <input type="checkbox" name="book[read]" id="<%= book.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
     <% end %>
 </ol>

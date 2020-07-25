@@ -11,10 +11,13 @@ class BooksController < ApplicationController
 
     post '/books' do
         @book = Book.find_or_create_by(params[:book])
+        
         if !current_user.books.include?(@book)
-            @book.set_default_status
-            @book.save
             current_user.books << @book
+            @shelf = UserBook.last
+            @shelf.set_default_status
+            @shelf.save
+            binding.pry
         end
         redirect "/books"
     end
@@ -34,8 +37,9 @@ class BooksController < ApplicationController
             @book.save
         end
 
-        if @book.read != params[:book][:read]
+        if params[:book] && @book.read != params[:book][:read]
             @book.read = params[:book][:read]
+            @book.save
         end
         
         redirect "/books"
