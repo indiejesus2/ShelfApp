@@ -7,23 +7,23 @@
 
 
 <% @books.each do |book| %>
-<% @shelf.each do |s| %>
+<% @@shelf.each do |s| %>
 
 <ol>
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
+
    <li>Pages Read: <input type="number" name="s.pages_read" id="<%= s.pages_read %>" value="<%= s.pages_read %>"></li>
     <li>Read: <% if !s.read %> Still reading <input type="checkbox" name="s[read]" id="<%= s.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
     <% end %>
 </ol>
 
-<% binding.pry %>
+<form action="/books/<%= book.id %>" method="post">
+<input type="hidden" name="_method" value="PATCH">
 
 <% end %>
 
-<form action="/books/<%= book.id %>" method="post">
-<input type="hidden" name="_method" value="PATCH">
 <input type="submit" value="Update">
 </form>
 
