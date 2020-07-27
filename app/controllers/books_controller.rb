@@ -3,11 +3,6 @@ class BooksController < ApplicationController
 
     get '/books' do
         @books = current_user.books.uniq
-        @books.each do |book|
-            mine = UserBook.where("user_id = ?", current_user.id).merge( Book.where("book_id = ?", book.id))
-            @@shelf << mine
-        end
-        
         erb :"books/index"
     end
 
