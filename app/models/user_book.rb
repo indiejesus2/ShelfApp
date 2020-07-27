@@ -6,4 +6,8 @@ class UserBook < ActiveRecord::Base
         self.read = false
         self.pages_read = 0
     end
+
+    def self.shelf
+        joins(:books).merge(Book.id)
+    end
 end

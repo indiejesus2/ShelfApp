@@ -7,22 +7,19 @@
 
 
 <% @books.each do |book| %>
-<% @@shelf.each do |s| %>
 
+<% bookmark = current_user.user_books.find_by(book_id: book.id)  %>
+<form action="/books/<%= book.id %>" method="post">
+<input type="hidden" name="_method" value="PATCH">
 <ol>
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
 
-   <li>Pages Read: <input type="number" name="s.pages_read" id="<%= s.pages_read %>" value="<%= s.pages_read %>"></li>
-    <li>Read: <% if !s.read %> Still reading <input type="checkbox" name="s[read]" id="<%= s.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
-    <% end %>
+    <li>Pages Read: <input type="number" name="bookmark.pages_read" id="<%= bookmark.pages_read %>" value="<%= bookmark.pages_read %>"></li>
+   <li>Read: <% if !bookmark.read %> Still reading <input type="checkbox" name="bookmark[read]" id="<%= bookmark.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
+   <% end %>
 </ol>
-
-<form action="/books/<%= book.id %>" method="post">
-<input type="hidden" name="_method" value="PATCH">
-
-<% end %>
 
 <input type="submit" value="Update">
 </form>
@@ -35,5 +32,6 @@
 <br>
 
 <% end %>
+
 
 </div>

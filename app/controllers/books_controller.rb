@@ -2,11 +2,12 @@ class BooksController < ApplicationController
     @@shelf = []
 
     get '/books' do
-        
         @books = current_user.books.uniq
-        UserBook.where("user_id = ?", current_user.id).find_each do |book|
-            @@shelf << book
+        @books.each do |book|
+            mine = UserBook.where("user_id = ?", current_user.id).merge( Book.where("book_id = ?", book.id))
+            @@shelf << mine
         end
+        
         erb :"books/index"
     end
 
@@ -19,9 +20,9 @@ class BooksController < ApplicationController
         
         if !current_user.books.include?(@book)
             current_user.books << @book
-            shelf = UserBook.last
-            shelf.set_default_status
-            shelf.save
+            default = UserBook.last
+            default.set_default_status
+            default.save
         end
         redirect "/books"
     end
@@ -34,8 +35,6 @@ class BooksController < ApplicationController
 
     patch '/books/:id' do
 
-        # binding.pry 
-
         UserBook.where("user_id = ?", current_user.id).find_each do |book|
             @@shelf << book
         end
@@ -45,13 +44,14 @@ class BooksController < ApplicationController
         end
 
         # <%= if 'checked' book.read = true %>
-        if @mine.pages_read != params["s.pages_read"]
-            @mine.pages_read = params["s.pages_read"]
+        if @mine.pages_read != params["bookmark.pages_read"]
+            @mine.pages_read = params["bookmark.pages_read"]
             @mine.save
         end
+        
 
-        if params[:book] && @mine.read != params[:book][:read]
-            @mine.read = params[:book][:read]
+        if params[:bookmark] && @mine.read != params[:bookmark][:read]
+            @mine.read = params[:bookmark][:read]
             @mine.save
         end
         
