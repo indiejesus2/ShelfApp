@@ -18,12 +18,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-
-    binding.pry
-
+    user = User.create(:username => params[:username], :password => params[:password], :email => params[:email])
+    session[:user_id] = user.id
+    redirect '/books'
   end
 
   get '/account' do
+    binding.pry
     @user = User.find(session[:user_id])
     erb :account
   end

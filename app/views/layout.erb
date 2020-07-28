@@ -19,10 +19,9 @@
         <%= yield %>
 
       <footer class="branding">
+        <p><% if logged_in? %><a href="/logout">Log Out</p>
+        <p><% else %><a href="/signup">Sign Up</p><% end %></a>
         <small>&copy; 2020 <strong>Shelf</strong></small>
-        <p><% if logged_in? %><a href="/logout">Log Out</p><% end %>
-        
-
       </footer>
     </div>
 
@@ -33,3 +32,4 @@
     <![endif]-->
   </body>
 </html>
+
