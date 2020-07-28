@@ -2,7 +2,11 @@ class BooksController < ApplicationController
     @@shelf = []
 
     get '/books' do
-        @books = current_user.books.uniq
+        if !logged_in?
+            redirect '/failure'
+        else
+            @books = current_user.books.uniq
+        end
         erb :"books/index"
     end
 
