@@ -2,11 +2,7 @@ class BooksController < ApplicationController
     @@shelf = []
 
     get '/books' do
-        if !logged_in?
-            redirect '/failure'
-        else
-            @books = current_user.books.uniq
-        end
+        @books = current_user.books.uniq
         erb :"books/index"
     end
 
@@ -27,12 +23,12 @@ class BooksController < ApplicationController
     end
 
     get '/books/:id' do
-        # binding.pry
         @book = Book.find_by_id(params[:id])
         erb :"books/show"
     end
 
     patch '/books/:id' do
+
 
         UserBook.where("user_id = ?", current_user.id).find_each do |book|
             @@shelf << book
@@ -42,9 +38,8 @@ class BooksController < ApplicationController
             @mine = mine if mine.book_id == params[:id].to_i
         end
 
-        # <%= if 'checked' book.read = true %>
-        if @mine.pages_read != params["bookmark.pages_read"]
-            @mine.pages_read = params["bookmark.pages_read"]
+        if @mine.pages_read != params[:bookmark][:pages_read]
+            @mine.pages_read = params[:bookmark][:pages_read]
             @mine.save
         end
         
@@ -54,7 +49,9 @@ class BooksController < ApplicationController
             @mine.save
         end
         
+        "Book updated!"
         redirect "/books"
+        
     end
 
 
@@ -64,7 +61,5 @@ class BooksController < ApplicationController
         current_user.books.delete(@book)
         redirect "/books"
     end
-
-
-        
+         
 end

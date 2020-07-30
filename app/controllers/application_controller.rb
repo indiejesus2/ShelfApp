@@ -9,48 +9,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "ysunrcertsfueeresesercserotettoncrecvaentseerh"
   end
 
-  get "/" do
-    erb :welcome
-  end
-
-  get '/signup' do
-    erb :signup
-  end
-
-  post '/signup' do
-    user = User.create(:username => params[:username], :password => params[:password], :email => params[:email])
-    session[:user_id] = user.id
-    redirect '/books'
-  end
-
-  get '/account' do
-    binding.pry
-    @user = User.find(session[:user_id])
-    erb :account
-  end
-
-  get '/login' do
-    erb :login
-  end
-
-  post "/login" do
-    user = User.find_by(:username => params[:username])
-
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect '/books'
-    end
-  end
-
-  get "/logout" do
-    session.clear
-    redirect "/login"
-  end
-
-  get '/failure' do
-    erb :failure
-  end
-
   helpers do
     def logged_in?
       !!session[:user_id]
@@ -58,11 +16,12 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find(session[:user_id])
     end
-    def error
+    def error?
       if !logged_in?
-        erb :failure
+        erb :'user/failure'
       end
     end
+
   end
 
 end
