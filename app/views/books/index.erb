@@ -13,7 +13,6 @@
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
-
     <li>Pages Read: <input type="number" name="bookmark[pages_read]" id="<%= bookmark.pages_read %>" value="<%= bookmark.pages_read %>"></li>
    <li>Read: <% if !bookmark.read %> Still reading <input type="checkbox" name="bookmark[read]" id="<%= bookmark.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
    <% end %>
