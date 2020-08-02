@@ -12,10 +12,15 @@ class BooksController < ApplicationController
 
     post '/books' do
       #add params validations
-        @book = Book.find_or_create_by(params[:book])
-        current_user.user_books.create(book_id: @book.id, pages_read: 0, read: false)
+        if params[:book][:title] != "" && params[:book][:author] != ""
+            @book = Book.find_or_create_by(params[:book])
+            current_user.user_books.create(book_id: @book.id, pages_read: 0, read: false)
+            redirect "/books"           
+        else
+            redirect '/failure'
+        end
 
-        redirect "/books"
+
     end
 
     get '/books/:id' do
@@ -24,11 +29,9 @@ class BooksController < ApplicationController
     end
 
     patch '/books/:id' do
-
         @book = current_user.user_books.find_by(book_id: params[:id])
         @book.update(params[:bookmark])
-        redirect "/books"
-        
+        redirect "/books"        
     end
 
     delete '/books/:id' do
