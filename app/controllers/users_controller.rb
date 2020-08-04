@@ -6,8 +6,12 @@ class UsersController < ApplicationController
     
     post '/signup' do
         user = User.create(params)
-        session[:user_id] = user.id
-        redirect '/books'
+        if user.valid?
+            session[:user_id] = user.id
+            redirect '/books'
+        else
+            redirect '/failure'
+        end
     end
     
     
