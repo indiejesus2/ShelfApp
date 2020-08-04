@@ -2,7 +2,7 @@ class BooksController < ApplicationController
     @@shelf = []
 
     get '/books' do
-        @books = current_user.books
+        # @books = current_user.books
         erb :"books/index"
     end
 

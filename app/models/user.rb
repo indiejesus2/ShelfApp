@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
     def book_shelf 
         self.books
     end
+
+    def bookmark
+        self.user_books
+    end
+    
 end
