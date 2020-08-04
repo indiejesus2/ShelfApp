@@ -17,6 +17,11 @@
 
     <h1>Shelf</h1>
     <h3>Share Your Collection With Us</h3>
+    <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius">
+      <%= flash[type] %>
+    </div>
+    <% end %>
     <div class="wrapper">
 
         <%= yield %>
