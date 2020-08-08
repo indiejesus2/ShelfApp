@@ -15,12 +15,14 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
     def current_user
-      User.find(session[:user_id])
-    end
-    def error?
-      if !logged_in?
-        erb :'user/failure'
+      if session[:user_id]
+        User.find(session[:user_id])
+      else
+        error
       end
+    end
+    def error
+        redirect '/failure'
     end
 
   end

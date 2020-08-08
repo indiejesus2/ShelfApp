@@ -1,12 +1,12 @@
-<h1><%= current_user.username %>'s Bookshelf: <%= @books.length %> Books on the Shelf</h1>
+<h1><%= current_user.username %>'s Bookshelf: <%= current_user.books.length %> Books on the Shelf</h1>
 <a href="/books/new">New Book!</a>
 <br><br>
 
+
 <div>
 
-<% @books.each do |book| %>
-
-<% bookmark = current_user.user_books.find_by(book_id: book.id)  %>
+<% current_user.books.each do |book| %>
+<% bookmark = current_user.bookmark(book.id) %>
 <form action="/books/<%= book.id %>" method="post">
 <input type="hidden" name="_method" value="PATCH">
 <ol>
@@ -29,6 +29,7 @@
 <br>
 
 <% end %>
+
 
 
 </div>

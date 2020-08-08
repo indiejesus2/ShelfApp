@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
     @@shelf = []
 
+        
     get '/books' do
-        # @books = current_user.books
         erb :"books/index"
     end
 
@@ -23,8 +23,7 @@ class BooksController < ApplicationController
 
     end
 
-    get '/books/:id' do
-        @book = Book.find_by_id(params[:id])       
+    get '/books/:id' do    
         erb :"books/show"
     end
 

@@ -1,3 +1,5 @@
+<% @book = current_user.find_by(book_id: id) %>
+<% binding.pry %>
 <form action="/books/<%= @book.id %>" method="post">
 <input type="hidden" name="_method" value="DELETE">
 

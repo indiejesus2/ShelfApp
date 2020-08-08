@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
     has_many :books, through: :user_books
     validates :email, :username, uniqueness: { case_sensitive: true }
     
-    def book_shelf 
+    def shelf 
         self.books
     end
 
-    def bookmark
-        self.user_books
+    def bookmark(id)
+        self.user_books.find_by(book_id: id)
     end
-    
+
 end
