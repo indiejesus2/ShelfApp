@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
-    @@shelf = []
-
-        
+    
     get '/books' do
         erb :"books/index"
     end
@@ -11,13 +9,12 @@ class BooksController < ApplicationController
     end
 
     post '/books' do
-        flash[:info] = "Please enter a title and author."
-        @book = Book.find_or_create_by(params[:book])
-        if @book.valid?
-            current_user.user_books.create(book_id: @book.id, pages_read: 0, read: false)
+        book = Book.find_or_create_by(params[:book])
+        if book.valid?
+            current_user.user_books.create(book_id: book.id, pages_read: 0, read: false)
             redirect "/books"           
         else
-            flash[:info]
+            flash[:info] = "Please enter a title and author."
             redirect "/books/new"
         end
 
@@ -29,16 +26,19 @@ class BooksController < ApplicationController
 
     patch '/books/:id' do
         current_user.bookmark(params[:id]).update(params[:bookmark])
-        @book = Book.find_by_id(params[:id])
-        flash[:update] = "#{@book.title} has been updated!"
-        flash[:update]
+        flash[:update] = "#{book.title} has been updated!"
         redirect "/books"        
     end
 
     delete '/books/:id' do
-        @book = current_user.books.find_by_id(params[:id])
-        current_user.books.delete(@book)
+        current_user.books.delete(book)
         redirect "/books"
+    end
+
+    private
+
+    def book
+        current_user.books.find_by_id(params[:id])
     end
          
 end
