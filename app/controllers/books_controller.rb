@@ -28,8 +28,7 @@ class BooksController < ApplicationController
     end
 
     patch '/books/:id' do
-        @bookmark = current_user.user_books.find_by(book_id: params[:id])
-        @bookmark.update(params[:bookmark])
+        current_user.bookmark(params[:id]).update(params[:bookmark])
         @book = Book.find_by_id(params[:id])
         flash[:update] = "#{@book.title} has been updated!"
         flash[:update]
