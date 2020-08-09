@@ -26,6 +26,9 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect '/books'
+        else
+            flash[:login] = "Incorrect Username/Password. Please try again."
+            redirect '/login'
         end
     
     end

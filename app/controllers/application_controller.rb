@@ -24,6 +24,20 @@ class ApplicationController < Sinatra::Base
     def error
         redirect '/failure'
     end
+  
+    # def message(input)
+    #   case input
+    #   when alert
+        
+    #   when info
+        
+    #   when login
+        
+    #   when update
+        
+    #   end
+    # end
+
 
   end
 

@@ -1,4 +1,4 @@
-<h1><%= current_user.username %>'s Bookshelf: <%= current_user.books.length %> Books on the Shelf</h1>
+<center><h1><%= current_user.username %>'s Bookshelf: <%= current_user.books.length %> Books on the Shelf</h1></center>
 <a href="/books/new">New Book!</a>
 <br><br>
 
@@ -24,7 +24,7 @@
 
 <form action="/books/<%= book.id %>" method="post">
 <input type="hidden" name="_method" value="DELETE">
-<input type="submit" value="delete">
+<input type="submit" value="Delete">
 </form>
 <br>
 

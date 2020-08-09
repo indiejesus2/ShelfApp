@@ -15,20 +15,23 @@
   </head>
   <body>
 
-    <h1>Shelf</h1>
-    <h3>Share Your Collection With Us</h3>
-    <% flash.keys.each do |type| %>
+    <center><h1>Shelf</h1></center>
+    <center><h3>Share Your Collection With Us</h3></center>
+        <% flash.keys.each do |type| %>
       <div data-alert class="flash <%= type %> alert-box radius">
       <%= flash[type] %>
     </div>
     <% end %>
+
     <div class="wrapper">
 
         <%= yield %>
 
       <footer class="branding">
         <p><% if logged_in? %><a href="/logout">Log Out</p>
-        <p><% else %><a href="/signup">Sign Up</p><% end %></a>
+        <p><% else %><a href="/login">Login</a>
+        <a href="/signup">Sign Up</p><% end %></a>
+        
         <small>&copy; 2020 <strong>Shelf</strong></small>
       </footer>
     </div>
