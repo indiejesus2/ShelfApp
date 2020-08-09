@@ -26,18 +26,18 @@ class BooksController < ApplicationController
 
     patch '/books/:id' do
         current_user.bookmark(params[:id]).update(params[:bookmark])
-        flash[:update] = "#{book.title} has been updated!"
+        flash[:update] = "#{copy.title} has been updated!"
         redirect "/books"        
     end
 
     delete '/books/:id' do
-        current_user.books.delete(book)
+        current_user.books.delete(copy)
         redirect "/books"
     end
 
     private
 
-    def book
+    def copy
         current_user.books.find_by_id(params[:id])
     end
          

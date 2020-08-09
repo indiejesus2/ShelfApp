@@ -5,12 +5,14 @@ class UsersController < ApplicationController
     end
     
     post '/signup' do
+        binding.pry
         user = User.create(params)
         if user.valid?
             session[:user_id] = user.id
             redirect '/books'
         else
-            redirect '/failure'
+            flash[:alert] = "Username/Email is currently in use. Please try again."
+            redirect '/signup'
         end
     end
     
