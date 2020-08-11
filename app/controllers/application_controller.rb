@@ -1,5 +1,4 @@
 require './config/environment'
-# require './app/models'
 
 class ApplicationController < Sinatra::Base
   configure do
@@ -8,6 +7,10 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "ysunrcertsfueeresesercserotettoncrecvaentseerh"
     register Sinatra::Flash
+  end
+
+  get '/' do
+    redirect '/login'
   end
 
   helpers do
