@@ -16,6 +16,8 @@ If there isn't a user logged in and they attempt to access the books or books/ne
 
 In order to run application successfully, please run bundle install for the necessary gems to be installed.
 
+The Session_Secret is hidden to prevent users and others from viewing password. In order for the application to run correctly, it is advised to create a .env file that stores Session_Secret.
+
 Once the gems have been properly installed, the application can be run by typing shotgun into terminal. This will set up a local host that will allow users to interact with the app. Enjoy!
 
 ## Contributing
