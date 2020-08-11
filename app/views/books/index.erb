@@ -11,14 +11,15 @@
     <li>Title: <%= book.title %></li>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
-    <li>Pages Read: <input type="number" name="bookmark[pages_read]" id="<%= bookmark.pages_read %>" value="<%= bookmark.pages_read %>"></li>
+    <% if !bookmark.read %><li>Pages Read: <input type="number" name="bookmark[pages_read]" id="<%= bookmark.pages_read %>" value="<%= bookmark.pages_read %>"></li> <% end %>
    <li>Read: <% if !bookmark.read %> Still reading <input type="checkbox" name="bookmark[read]" id="<%= bookmark.read %>" value="<%= 'checked' ? 1 : 0 %>"> Completed! <% else %> Completed! </li>
    <% end %>
 </ol>
 
-<input type="submit" value="Update">
+<input type="submit" value="Update"></form>
+<form action="/books/<%= book.id %>" method="post">
 <input type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete">
-</form>
+<input type="submit" value="Delete"></form>
+
 <br>
 <% end %>
