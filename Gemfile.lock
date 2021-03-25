@@ -14,8 +14,6 @@ GEM
     activerecord (6.1.3)
       activemodel (= 6.1.3)
       activesupport (= 6.1.3)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
     activesupport (6.1.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -46,7 +44,7 @@ GEM
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     method_source (1.0.0)
-    mini_mime (1.0.2)
+    mini_mime (1.0.3)
     minitest (5.14.4)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -120,7 +118,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  activerecord-postgresql-adapter
   bcrypt
   capybara
   database_cleaner!

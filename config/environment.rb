@@ -10,7 +10,7 @@ configure :development do
 end
 
 configure :production do 
-  db = URI.parse(ENV['https://infinite-brook-32239.herokuapp.com/'] || 'postgres://localhost/mydb1')
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
   ActiveRecord::Base.establish_connection(
     :adapter => db.scheme == 'postgres' ? 'postgresql' : db:scheme,

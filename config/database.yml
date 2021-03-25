@@ -9,7 +9,4 @@ test:
 
 production:
   adapter: postgresql
-  database: mission
-  username: username
-  password: password
-  host: localhost
+  database: database.db
