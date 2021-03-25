@@ -6,7 +6,8 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'sinatra-flash'
 gem 'rake'
 gem 'require_all'
-gem 'sqlite3', '~> 1.3.6'
+gem 'pg'
+gem 'activerecord-postgresql-adapter'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
@@ -14,9 +15,10 @@ gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
 
-group :test do
+group :development, :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+
 end

@@ -2,7 +2,7 @@
 <a href="/books/new">New Book!</a>
 <br><br>
 
-<% current_user.books.each do |book| %>
+<% @books.each do |book| %>
 <% bookmark = current_user.bookmark(book.id) %>
 <form action="/books/<%= book.id %>" method="post">
 <input type="hidden" name="_method" value="PATCH">

@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
     
     get '/books' do
+        @books = current_user.books.sort_by { |book| book.title }
         erb :"books/index"
     end
 
