@@ -1,9 +1,10 @@
 development:
-  adapter: sqlite3
+  adapter: postgresql
   database: database.db
 
 test:
-  adapter: sqlite3
+    adapter: postgresql
+
   database: database.db
 
 production:

@@ -7,8 +7,6 @@ end
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'sinatra-flash'
 gem 'rake'
 gem 'require_all'
 
@@ -25,6 +23,8 @@ group :development, :test do
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
   gem 'sqlite3', '~> 1.3.6'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+
 end
 
 group :production do
