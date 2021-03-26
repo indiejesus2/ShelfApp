@@ -6,9 +6,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, ENV['SESSION_SECRET']
   end
 
-  # get '/' do
-  #   redirect '/login'
-  # end
+  get '/' do
+    redirect '/login'
+  end
 
   helpers do
     def logged_in?
