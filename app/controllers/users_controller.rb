@@ -14,7 +14,6 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
-            flash[:alert] = "Username/Email is currently in use. Please try again."
             redirect '/signup'
         end
     end
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
-            flash[:login] = "Incorrect Username/Password. Please try again."
             redirect '/login'
         end
     
