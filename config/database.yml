@@ -1,12 +1,9 @@
 development:
   adapter: postgresql
   database: database.db
-
 test:
     adapter: postgresql
-
-  database: database.db
-
+    database: database.db
 production:
   adapter: postgresql
   database: database.db

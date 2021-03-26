@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
-
-
+ruby '2.6.5'
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
@@ -8,7 +7,7 @@ gem 'rake'
 gem 'require_all'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'pg'
-
+gem 'activerecord-postgresql-adapter'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
