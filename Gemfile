@@ -13,6 +13,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
+gem 'flash_rails_messages', '~> 2.2'
 
 group :development do
   gem 'rspec'
