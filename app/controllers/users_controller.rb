@@ -14,6 +14,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
+            flash.now[:alert] = "Need more information"
             redirect '/signup'
         end
     end
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
+            flash.now[:alert] = "Incorrect information"
             redirect '/login'
         end
     
