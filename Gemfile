@@ -13,13 +13,12 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
-gem 'flash_rails_messages', '~> 2.2'
+gem 'rack-flash3'
 
 group :development do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-  gem 'sqlite3', '~> 1.3.6'
 end
 

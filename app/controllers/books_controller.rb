@@ -15,8 +15,7 @@ class BooksController < ApplicationController
             current_user.user_books.create(book_id: book.id, pages_read: 0, read: false)
             redirect "/books"           
         else
-            flash[:info] = "Please enter a title and author."
-            redirect "/books/new"
+            redirect "/books/new", :alert => "Need more information"
         end
 
     end

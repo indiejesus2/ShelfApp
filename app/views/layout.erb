@@ -17,10 +17,13 @@
 
     <center><h1>Shelf</h1></center>
     <center><h3>Share Your Collection With Us</h3></center>
-        <% flash.keys.each do |type| %>
-        <div data-alert class='flash <% type %> alert-box radius'>
-        <%= flash[type] %>
-        </div>
+          
+      <% if flash.has?(:values) %>
+      <% binding.pry %>
+  <div>
+    <%= flash[:values] %>
+  </div>
+<% end %>
 
     <div class="wrapper">
 
