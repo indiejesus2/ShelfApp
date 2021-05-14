@@ -15,6 +15,7 @@ class UsersController < ApplicationController
             redirect '/books'
         else
             flash.now[:alert] = "Need more information"
+            console.log(flash)
             redirect '/signup'
         end
     end
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
             redirect '/books'
         else
             flash.now[:alert] = "Incorrect information"
+            console.log(flash)
             redirect '/login'
         end
     
