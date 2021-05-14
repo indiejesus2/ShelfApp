@@ -6,8 +6,8 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, ENV['SESSION_SECRET']
-    use Rack::Flash
   end
+  use Rack::Flash
 
   get '/' do
     redirect '/login'

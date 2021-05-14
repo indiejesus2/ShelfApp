@@ -15,7 +15,7 @@ class UsersController < ApplicationController
             redirect '/books'
         else
             flash.now[:notice] = "Need more information"
-            print(flash)
+            print(flash[:notice])
             redirect '/signup'
         end
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
             redirect '/books'
         else
             flash.now[:notice] = "Incorrect information"
-            print(flash)
+            print(flash[:notice])
             redirect '/login'
         end
     
