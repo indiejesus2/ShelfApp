@@ -14,8 +14,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
-            flash.now[:notice] = "Need more information"
-            print(flash[:notice])
+            flash[:notice] = "Need more information"
             redirect '/signup'
         end
     end
@@ -31,8 +30,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/books'
         else
-            flash.now[:notice] = "Incorrect information"
-            print(flash[:notice])
+            flash[:notice] = "Incorrect information"
             redirect '/login'
         end
     
