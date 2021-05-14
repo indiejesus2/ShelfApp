@@ -18,7 +18,7 @@
     <center><h1>Shelf</h1></center>
     <center><h3>Share Your Collection With Us</h3></center>
           
-      <% if flash %>
+      <% if flash.notice? %>
   <div>
   <% binding.pry %>
     <%= flash[:notice] %>
