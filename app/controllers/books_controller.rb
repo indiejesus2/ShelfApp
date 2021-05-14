@@ -15,7 +15,8 @@ class BooksController < ApplicationController
             current_user.user_books.create(book_id: book.id, pages_read: 0, read: false)
             redirect "/books"           
         else
-            redirect "/books/new", flash.now[:alert] = "Need more information"
+            flash[:notice] = "Please enter a title and author."
+            redirect "/books/new"
         end
 
     end
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
 
     patch '/books/:id' do
         current_user.bookmark(params[:id]).update(params[:bookmark])
+        flash[:notice] = "#{copy.title} has been updated!"
         redirect "/books"        
     end
 
